@@ -1,0 +1,22 @@
+#!/bin/bash
+if [[ $(/usr/bin/id -u) -ne 0 ]];
+ then
+     echo "script must be run as root"
+     exit
+fi
+
+function wallpaper {
+        options="Cancel\nRandom\nCustom"
+        selected=$(echo -e $options | dmenu -c -l 3 -p "Select: ")
+        if [[ $selected = "Random" ]]; then
+             styli.sh -p
+        elif [[ $selected = "Custom" ]]; then
+             styli.sh -p -d $HOME/github/wallpapers
+        elif [[ $selected = "Cancel" ]]; then
+             return
+
+        fi
+}
+
+wallpaper && cd /home/adrian/github/dwm && make clean install
+
