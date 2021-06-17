@@ -1,0 +1,2 @@
+cd /home/adrian/github/dwm && sudo make clean install
+cd /home/adrian/github/dmenu && sudo make clean install
