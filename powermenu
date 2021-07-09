@@ -1,22 +1,20 @@
 #!/bin/sh
 
 function powermenu {
-	options="Cancel\nLog Out\nShutdown\nReboot\\nRestart DWM\nSleep\nLock"
+	options="Cancel\nLog Out\nShutdown\nReboot\nSleep\nLock"
 	selected=$(echo -e $options | dmenu -c -bw 5  -l 6 -p "Select: ")
 	if [[ $selected = "Shutdown" ]]; then
-	submenu="Yes/nNo"
-	selected=$(echo -e $submenu | dmenu -c -bw 5 -l 6 -p "Are You Sure?: ")
-	    poweroff
-	elif [[ $selected = "Restart" ]]; then
-	     reboot
+	    shutdown now
+	elif [[ $selected = "Reboot" ]]; then
+	     shutdown -r now
 	elif [[ $selected = "Sleep" ]]; then
              systemctl suspend
 	elif [[ $selected = "Lock" ]]; then
              slock
 	elif [[ $selected = "Cancel" ]]; then
              return
-	elif [[ $selected = "Quit" ]]; then
-             running = 0
+	elif [[ $selected = "Log Out" ]]; then
+             pkill dwm
 
 	fi
 }
