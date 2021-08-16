@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#this script is supposed to take user input with dmenu, be it a file path or link, and open the provided file path or link with mpv. 
+
+#get file path from user
+function mpvopen {
+	openoath=""
+get file path or url with a dmenu prompt
+	selected=$(echo -e $openpath | dmenu -c -bw 5  -l 1 -p "Open File Path, Cancel to exit: ")
+#exit dmenu if string "Cancel" is given
+if [[ $selected = "Cancel" ]]; then
+             return
+#open provided file path or url in an mpv instance without requiring a terminal
+elif [[ mpv --really-quiet --no-terminal $openpath  ]];
+	fi
+}
+
+#call function
+mpvopen
+
+
+
+
